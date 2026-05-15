@@ -172,7 +172,7 @@ jobs:
       - uses: actionhippie/swap-space@v1
         if: inputs.full_lto
         with:
-          size: 20G
+          size: 32G
 
       - name: 配置ccache目录
         run: |
@@ -628,6 +628,7 @@ jobs:
       - name: 配置FullLTO
         if: inputs.full_lto
         run: |
+          cd kernel_workspace
           echo "CONFIG_LTO_CLANG_FULL=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_LTO_CLANG_THIN=n" >> ./common/arch/arm64/configs/gki_defconfig
            
